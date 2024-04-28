@@ -1,0 +1,398 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+ body {
+	 margin: 0;
+	 padding: 0;
+	 font-family: 'Open Sans', sans-serif;
+	 color: #333;
+}
+a {
+	text-decoration: none; /* Elimina el subrayado del enlace */
+  }
+  
+ header {
+	 background: #0096c7;
+}
+
+h2{
+	font-size: 25px;
+}
+/* Estilos para el logotipo */
+.logo {
+    position: absolute;
+    top: 5px; /* Ajusta la distancia desde arriba según tu preferencia */
+    left: 20px; /* Ajusta la distancia desde la izquierda según tu preferencia */
+}
+
+.logo img {
+    height: 80px; /* Ajusta la altura del logotipo según tu preferencia */
+    width: auto;
+}
+
+ .headline {
+	 position: relative;
+	 height: 400px;
+	 color: #fff;
+	 text-align: center;
+	 background: url('sala.jpg') no-repeat center center;
+	 background-size: cover;
+}
+ .headline:after {
+	 position: absolute;
+	 content: '';
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background: rgba(17, 17, 17, 0.5);
+}
+ .inner {
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+	 opacity: 0;
+	 z-index: 10;
+	 transform: translateX(-50%) translateY(-50%);
+	 animation: fade-in 0.75s 0.25s ease-in forwards;
+}
+ .inner h1 {
+	 margin: 0;
+	 font-size: 4em;
+	 line-height: 1.2em;
+}
+ .inner p {
+	 margin: 0;
+	 font-size: 1.4em;
+	 font-style: italic;
+	 font-family: serif;
+}
+ nav {
+	 position: fixed;
+	 width: 100%;
+	 z-index: 10;
+}
+ nav.scrolled {
+	 background: #0096c7;
+}
+ nav ul {
+	 float: right;
+	 list-style: none;
+	 padding: 25px;
+	 margin: 0;
+}
+ nav li {
+	 float: left;
+}
+ nav a {
+	 font-size: 1.5em;
+	 color: #fff;
+	 text-decoration: none;
+	 margin: 5px 0 0 20px;
+	 display: block;
+}
+ nav a:hover {
+	 color: #ededed;
+}
+#servicios-header {
+	background-image: url('mancha.png'); /* Reemplaza 'ruta-de-la-imagen.jpg' con la ruta de tu imagen */
+	background-size: 350px; /* Ajusta el tamaño de la imagen para que cubra el encabezado */
+	background-repeat: no-repeat; /* Evita que la imagen se repita */
+	background-position: center; /* Centra la imagen en el encabezado */
+	padding: 30px; /* Añade un poco de espacio alrededor del texto */
+	text-align: center; /* Centra el texto en el encabezado */
+	color: #ffffff; /* Color del texto (ajusta según tus necesidades) */
+  }
+#servicios-header h1{
+	margin-top: -5px;
+}
+  
+
+.cards-container {
+    max-width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Utiliza Grid con columnas automáticas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin-top: 50px;
+}
+
+.cardContainer {
+    width: 100%;
+    max-width: 100%; /* Cambia el ancho máximo a 100% para adaptarse al contenido */
+    box-sizing: border-box;
+	justify-content: center;
+
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+	border-radius: 10px;
+	border: 1.5px solid #ccc;
+    cursor: pointer;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    box-shadow: -10px 10px 7px -4px rgba(0, 0, 0, 0.15);
+    overflow: hidden; /* Agregamos desbordamiento oculto para el contenido */
+    margin: 0 auto;
+}
+
+.card .info {
+    padding: 16px;
+    text-align: justify; /* Añade justificación al texto */
+    text-justify: inter-word; /* Justifica el texto entre palabras */
+}
+
+
+
+.card:hover {
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    box-shadow: 0 18px 80px -8px rgba(0, 0, 0, 0.3); /* Sutil aumento de la sombra */
+}
+
+.front .img {
+    background-color: #dadce2;
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 250px;
+}
+
+/* Establece el número de columnas en pantallas medianas */
+@media screen and (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, minmax(300px, 1fr)); /* Dos columnas en lugar de tres */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas medianas */
+    }
+    .cardContainer {
+        max-width: 100%; /* Ajusta el ancho máximo de las tarjetas */
+    }
+}
+
+
+/* Establece el número de columnas en pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+    .cardContainer {
+        max-width: 100%; /* Ancho máximo de cada tarjeta en pantallas muy pequeñas */
+    }
+}
+
+/* Define clases para las imágenes de las cartas */
+.front .img1 {
+    background-image: url("niño.jpg");
+}
+
+.front .img2 {
+    background-image: url("pareja.jpg");
+}
+
+.front .img3 {
+    background-image: url("conducta.jpg");
+}
+
+/* Otras reglas de estilo si las tienes */
+
+
+.citas-programadas{
+	background-color: #dedede;
+	text-align: center;
+	width: 100%;
+	margin: 30px auto;
+	padding: 20px;
+	padding-top: 10px;
+	max-width: 800px;
+	font-size: 1.2em;
+	line-height: 1.6em;
+	box-sizing: border-box;
+	border-radius: 20px;
+
+}
+
+table{
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+section {
+	width: 100%;
+	margin: 50px auto;
+	padding: 20px;
+	max-width: 1000px;
+	font-size: 1.2em;
+	line-height: 1.6em;
+	box-sizing: border-box;
+	text-align: justify;
+}
+.cita{
+	background-color: #0087ca;
+	display: block;
+	margin: 0 auto;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.cita:hover{
+	background-color: #023e8a;
+}
+
+/* Estilos para el formulario de citas */
+#cita-form {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 20px;
+    padding-right: 50px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#cita-form h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#cita-form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    color: #333;
+}
+
+#cita-form input[type="text"],
+#cita-form input[type="tel"],
+#cita-form textarea,
+#cita-form input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: none;
+    background-color: #fff;
+}
+
+#cita-form2 button{
+    background-color: #0096c7;
+	display: block;
+	margin: 0 auto;
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#cita-form2 button:hover {
+    background-color: #0077a2;
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+    color: #ff0000;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Estilo para los campos de entrada con error */
+input:invalid,
+textarea:invalid {
+    border: 1px solid #ff0000;
+}
+
+/* Agrega estilos para el contenedor de fecha y hora */
+.date-time-inputs {
+    display: flex; /* Muestra los elementos en línea */
+    gap: 10px; /* Espacio entre los elementos (ajusta según tus necesidades) */
+}
+
+/* Ajusta el estilo de los campos de fecha y hora */
+.date-time-inputs input[type="date"],
+.date-time-inputs select {
+    flex: 1; /* Distribuye el espacio disponible de manera uniforme entre los elementos */
+    padding: 10px; /* Espaciado interno para los elementos (ajusta según tus necesidades) */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: none;
+    background-color: #fff;
+
+}
+
+
+/* Tu CSS existente aquí */
+
+
+/* Estilos para el pie de página */
+footer {
+  background-color: #CAF0F8;
+  color: rgb(0, 0, 0);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contact-info,
+.social-media {
+  flex-basis: 50%;
+}
+
+.contact-info h3,
+.social-media h3 {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  font-size: 24px;
+}
+
+.social-icons a {
+  color: #03045E;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #023e8a;
+}
+
+.copyright {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+ @keyframes fade-in {
+	 0% {
+		 opacity: 0;
+	}
+	 100% {
+		 opacity: 1;
+	}
+}
+ 

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Renacer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="logopng.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logopng.png" type="image/x-icon">
+</head>
+<body>
+<nav>
+    <div class="logo">
+      <a href="index.html"><img  src="logopng.png" alt="logo"></a>
+    </div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="citas.html">Citas</a></li>
+    </ul>
+  </nav>
+  <header>
+    <div class="headline">
+      <div class="inner">
+        <h1>Clínica Psicológica <p></p>"Renacer"</h1>
+        <p>Desliza para ver</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="cita-form">
+    <h2>Complete el siguiente formulario para agendar su cita:</h2>
+    <form action="cita.php" method="POST" id="cita-form2">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+            
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="motivo">Motivo de la consulta:</label>
+      <textarea id="motivo" name="motivo" required></textarea>
+            
+        <label for="fecha-hora">Fecha y Hora:</label>
+        <div class="date-time-inputs">
+            <input type="date" id="fecha" name="fecha" required>
+            <select id="hora" name="hora" required>
+                <option value="14:00:00">14:00 pm</option>
+                <option value="15:00:00">15:00 pm</option>
+                <option value="16:00:00">16:00 pm</option>
+                <option value="17:00:00">17:00 pm</option>
+            </select>
+        </div>
+        <br>
+        <button type="button" id="enviar-cita">Agendar Cita</button>
+    </form>
+</section>
+
+<div id="confirmacion-cita" style="display: none; text-align: center">
+  <p>¡Cita agendada con éxito! Te contactaremos pronto.</p>
+</div>
+
+<div id="mensaje-error" style="display: none; text-align: center">
+  <p></p>
+</div>
+
+  <footer>
+    <div class="footer-container">
+        <div class="contact-info">
+            <h3>Contacto</h3>
+            <p>Teléfono: +502 5454 1686</p>
+            <p>Correo electrónico: prenacergt@gmail.com</p>
+        </div>
+        <div class="social-media">
+            <h3>Encuéntranos en facebook</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/ClinicaPsicologiaNuevaConcepcion" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+    <p class="copyright">&copy; 2023 Clínica Psicológica "Renacer". Todos los derechos reservados.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    const inputFecha = document.getElementById("fecha");
+
+    function esFinDeSemana(fecha) {
+        const dia = fecha.getDay();
+        return dia === 5 || dia === 6; 
+    }
+
+    inputFecha.addEventListener("input", function() {
+        const fechaSeleccionada = new Date(this.value);
+
+        if (esFinDeSemana(fechaSeleccionada)) {
+            alert("No se permiten sábados ni domingos. Por favor, selecciona otra fecha.");
+            this.value = "";
+        }
+    });
+  </script>  
+  <script>
+    $(document).ready(function() {
+      // Cuando se haga clic en el botón "Agendar Cita"
+      $("#enviar-cita").click(function() {
+          // Obtener los datos del formulario
+          const nombre = $("#nombre").val();
+          const telefono = $("#telefono").val();
+          const motivo = $("#motivo").val();
+          const fecha = $("#fecha").val();
+          const hora = $("#hora").val();
+  
+          // Realizar la solicitud AJAX
+          $.ajax({
+              type: "POST",
+              url: "cita.php",
+              data: {
+                  nombre: nombre,
+                  telefono: telefono,
+                  motivo: motivo,
+                  fecha: fecha,
+                  hora: hora
+              },
+              success: function(response) {
+                  if (response === "success") {
+                      // Mostrar mensaje de éxito
+                      $("#cita-form2").hide();
+                      $("#confirmacion-cita").show();
+                  } else {
+                      // Mostrar mensaje de error en una alerta
+                      alert(response);
+                  }
+              }
+          });
+      });
+  });
+  
+</script>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
